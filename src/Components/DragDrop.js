@@ -16,10 +16,14 @@ function DragDrop() {
   const [inputField, setInputField] = useState([]);
   const [val3, setVal3] = useState("");
   const [input1, setInput1] = useState([]);
-  const [val4, setVal4] = useState({});
+  const [val4, setVal4] = useState([]);
   const [placeholder1, setplaceholder1] = useState([]);
   const [val5, setVal5] = useState({});
   const [name1, setName1] = useState([]);
+  const [val6, setVal6] = useState({});
+  const [maxlength1, setMaxlength1] = useState([]);
+  const [val7, setVal7] = useState({});
+  const [size1, setSize1] = useState([]);
 
   let InputList = [
     {
@@ -94,22 +98,13 @@ function DragDrop() {
     });
     
   };
-  const handleIdData = (e) => {
-    setVal(e.target.value);
-  };
-  const handleClassName = (e) => {
-    setVal1(e.target.value);
-  };
-  const handlePlaceholder = (e) => {
-    setVal3(e.target.value);
-  };
-  const handleName = (e) => {
-    setVal5(e.target.value);
-  };
+ 
   const handleSubmit = () => {
     setIdData([...idData, val]);
     setClassNames([...classNames, val1]);
     setName1([...name1, val5]);
+    setMaxlength1([...maxlength1, val6]);
+    setSize1([...size1, val7]);
     setInputField((val) => {
       return [...val, val3];
     });
@@ -141,7 +136,7 @@ function DragDrop() {
                       id={InputDrag.id}
                       placeholder={InputDrag.name}
                       name={InputDrag.name}
-                      className={InputDrag.className}
+                      className="input1"
                       onChange={handleChange}
                       value={InputDrag.value}
                     />
@@ -170,8 +165,10 @@ function DragDrop() {
                           setShow(true);
                         }}
                         value={InputDrag.value}
+                        maxlength={maxlength1[index]}
+                        size={size1[index]}
                       />
-                      <button
+                      {/* <button
                         className="btn btn-link mx-1 "
                         type="button"
                         onClick={() => {
@@ -179,7 +176,7 @@ function DragDrop() {
                         }}
                       >
                         <BiMove size={25} />
-                      </button>
+                      </button> */}
                     </div>
                   </Draggable>
                 </div>
@@ -193,31 +190,45 @@ function DragDrop() {
             <br />
             <input
               type="text"
-              className="mb-5"
+              className="mb-5 input1"
               placeholder="enter id"
-              onChange={handleIdData}
+              onChange={(e) => setVal(e.target.value)}
             />
             <br />
-            <label>CassName </label>
+            <label>ClassName </label>
             <input
               type="text"
-              className="mb-5"
-              onChange={handleClassName}
+              className="mb-5 input1"
+              onChange={(e) => setVal1(e.target.value)}
               placeholder="enter class"
             />
             <label>Label</label>
             <input
               type="text"
-              className="mb-5"
+              className="mb-5 input1"
               name="firstname"
-              onChange={handlePlaceholder}
+              onChange={(e) => setVal3(e.target.value)}
               placeholder="enter label"
             />
             <label>Name</label>
             <input
               type="text"
-              className="mb-5"
-              onChange={handleName}
+              className="mb-5  input1"
+              onChange={(e) => setVal5(e.target.value)}
+              placeholder="enter name"
+            />
+             <label>Maxlength</label>
+            <input
+              type="text"
+              className="mb-5  input1"
+              onChange={(e) => setVal6(e.target.value)}
+              placeholder="enter name"
+            />
+             <label>size 1 to 50</label>
+            <input
+              type="text"
+              className="mb-5 input1"
+              onChange={(e) => setVal7(e.target.value)}
               placeholder="enter name"
             />
             <button
@@ -252,8 +263,7 @@ function DragDrop() {
                   </div>
                 );
               })}
-            </div>
-            <div></div>
+            </div>   
           </div>
         </div>
       </div>
