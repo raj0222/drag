@@ -73,7 +73,7 @@ img {
 }
 
 
- input{
+ .input1{
   width: 170px;
   height: 30px;
 
@@ -99,4 +99,9 @@ img {
 }
 
 
+
+.input1{
+  border: 2px solid #8842d5;
+  border-radius: 4px; 
+}
 
