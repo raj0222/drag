@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Inputdrag from "./InputDrag";
 import { useDrop } from "react-dnd";
 import "../App.css";
@@ -24,12 +24,17 @@ function DragDrop() {
   const [maxlength1, setMaxlength1] = useState([]);
   const [val7, setVal7] = useState({});
   const [size1, setSize1] = useState([]);
+  const [showdata, setShowdata] = useState([]);
+  const [count, setCount] = useState(-1);
+  const [data, setdata] = useState();
+  const [type, setType] = useState([]);
+  const [val8, setVal8] = useState({});
 
   let InputList = [
     {
       id: 1,
       type: "text",
-      placeholder: inputField,
+      placeholder: "",
       name: "firstname",
     },
     {
@@ -86,31 +91,43 @@ function DragDrop() {
       isOver: !!monitor.isOver(),
     }),
   }));
+ 
   const addInputToBoard = (id) => {
     const InputList1 = InputList.filter((Inputdrag) => id === Inputdrag.id);
-
     setBoard((board) => [...board, InputList1[0]]);
   };
+  
   const handleChange = (e) => {
     setVal4({
       ...val4,
       [e.target.name]: e.target.value,
     });
-    
   };
  
   const handleSubmit = () => {
     setIdData([...idData, val]);
     setClassNames([...classNames, val1]);
-    setName1([...name1, val5]);
+    setName1([...name1, val5]);   
     setMaxlength1([...maxlength1, val6]);
     setSize1([...size1, val7]);
     setInputField((val) => {
       return [...val, val3];
     });
     setplaceholder1([...placeholder1, val3]);
+    setType([...type, val8]);
   };
-
+  useEffect(() => {  
+      HandleGetdata();  
+  },[idData]);
+  const HandleGetdata = () => {
+    setCount(count + 1);
+    setShowdata((val) => {
+      return [
+        ...val,
+        `<label className="mx-2 h5">${inputField[count]}</label> <input type=${type} id=${idData[count]}  name=${name1[count]} classname=${classNames[count]}  placeholder=${placeholder1[count]} maxlength=${maxlength1[count]} size=${size1[count]} />  <br/><br/>`,
+      ];
+    });    
+  };
   const handleSubmit2 = (id) => {
     if (val4.length === 0) {
     } else {
@@ -119,11 +136,27 @@ function DragDrop() {
       });
     }
   };
-  console.log("val", input1);
-  console.log("classname", classNames);
+  const getCode=()=>{
+    let ary=[];
+    showdata.splice(2).map((val)=>{
+    ary.push(val);
+    })
+   setdata(ary) 
+  }
+  const downloadTxtFile = () => {
+    const element = document.createElement("a");
+    const file = new Blob([data], {
+      type: "text/plain"
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = "myFile.html";
+    document.body.appendChild(element);
+    element.click();
+  }
   return (
     <>
-      <Header onClick={handleSubmit2} />
+     <Header onClick={handleSubmit2} button={downloadTxtFile} getcode={getCode} />
+
       <div className="container d-flex justify-content-start">
         <div className="row bg-info bg-gradient text-dark mt-4 firstDragInput">
           <div className="float-start col-idData ">
@@ -165,7 +198,7 @@ function DragDrop() {
                           setShow(true);
                         }}
                         value={InputDrag.value}
-                        maxlength={maxlength1[index]}
+                        maxLength={maxlength1[index]}
                         size={size1[index]}
                       />
                       {/* <button
@@ -185,7 +218,7 @@ function DragDrop() {
           </div>
         </div>
         {show ? (
-          <div className=" mx-3 mt-3">
+          <div className=" mx-3 ">
             <label>Id</label>
             <br />
             <input
@@ -193,6 +226,15 @@ function DragDrop() {
               className="mb-5 input1"
               placeholder="enter id"
               onChange={(e) => setVal(e.target.value)}
+            />
+            <br />
+            <label>type</label>
+            <br />
+            <input
+              type="text"
+              className="mb-5 input1"
+              placeholder="enter type"
+              onChange={(e) => setVal8(e.target.value)}
             />
             <br />
             <label>ClassName </label>
@@ -217,14 +259,14 @@ function DragDrop() {
               onChange={(e) => setVal5(e.target.value)}
               placeholder="enter name"
             />
-             <label>Maxlength</label>
+            <label>Maxlength</label>
             <input
               type="text"
               className="mb-5  input1"
               onChange={(e) => setVal6(e.target.value)}
               placeholder="enter name"
             />
-             <label>size 1 to 50</label>
+            <label>size 1 to 50</label>
             <input
               type="text"
               className="mb-5 input1"
@@ -236,15 +278,16 @@ function DragDrop() {
               type="button"
               onClick={() => {
                 handleSubmit();
-                setShow(false);
+                setShow(false);                
               }}
             >
               submit
             </button>
+           
           </div>
         ) : null}
         <div className="col-2 mt-5">
-          <div className="d-flex ">
+          {/* <div className="d-flex ">
             <div className="mx-3"></div>
             <div className="mx-3">
               {idData.map((items, index) => {
@@ -263,8 +306,14 @@ function DragDrop() {
                   </div>
                 );
               })}
-            </div>   
-          </div>
+            </div>              
+            {  
+              showdata.slice(2).map((item)=>{
+                return(<>
+                   <p>{(item)}</p>
+                </>)
+              })}
+          </div> */}
         </div>
       </div>
     </>

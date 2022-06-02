@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 
-function InputDrag({ id, type, placeholder, onChange,name,value,className,onClick,maxlength,size}) {
+function InputDrag({ id, type, placeholder, onChange,name,value,className,onClick,maxLength,size}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "input",
     item: { id: id },
@@ -21,7 +21,7 @@ function InputDrag({ id, type, placeholder, onChange,name,value,className,onClic
         value={value}
         className={className}
         onClick={onClick}
-        maxlength={maxlength}
+        maxLength={maxLength}
         size={size}  
       />
     </>

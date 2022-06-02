@@ -15,6 +15,8 @@ const Header = (props) => {
             <p className="card-text float-start">
             <button type="button" className="btn btn-secondary mx-2" onClick={handleRefresh}>New</button>
             <button type="button" className="btn btn-secondary mx-2" onClick={props.onClick}>Save</button>
+            <button type="button" className="btn btn-secondary mx-2" onClick={props.getcode}>Save form data</button>
+            <button className="btn btn-warning"  type='button' onClick={props.button}>downlaod</button>
             </p>
           </div>
         </div>
