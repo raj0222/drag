@@ -84,7 +84,7 @@ function DragDrop() {
     },
   ];
 
-  const [{ isOver }, drop] = useDrop(() => ({
+ const [{ isOver }, drop] = useDrop(() => ({
     accept: "input",
     drop: (item) => addInputToBoard(item.id),
     collect: (monitor) => ({
@@ -103,7 +103,6 @@ function DragDrop() {
       [e.target.name]: e.target.value,
     });
   };
- 
   const handleSubmit = () => {
     setIdData([...idData, val]);
     setClassNames([...classNames, val1]);
@@ -156,9 +155,8 @@ function DragDrop() {
   return (
     <>
      <Header onClick={handleSubmit2} button={downloadTxtFile} getcode={getCode} />
-
-      <div className="container d-flex justify-content-start">
-        <div className="row bg-info bg-gradient text-dark mt-4 firstDragInput">
+      <div className="container-fluid d-flex justify-content-start bg-secondary">
+        <div className="row bg-primary bg-gradient text-dark  mb-5 firstDragInput">
           <div className="float-start col-idData ">
             {InputList.map((InputDrag, index) => {
               return (
@@ -185,7 +183,7 @@ function DragDrop() {
               return (
                 <div key={index}>
                   <Draggable>
-                    <div className="mt-5 dropBoard-input inputDragFirst inputDiv">
+                    <div className="mt-5 dropBoard-input inputDragFirst  inputDiv">
                       <label className="mx-2 h5">{inputField[index]}</label>
                       <Inputdrag
                         type={InputDrag.type}
@@ -218,36 +216,32 @@ function DragDrop() {
           </div>
         </div>
         {show ? (
-          <div className=" mx-3 ">
-            <label>Id</label>
-            <br />
+          <div className=" mx-3  mt-4">
+            <label>Id</label>            
             <input
               type="text"
-              className="mb-5 input1"
+              className="mb-4 input1"
               placeholder="enter id"
               onChange={(e) => setVal(e.target.value)}
             />
-            <br />
             <label>type</label>
-            <br />
             <input
               type="text"
-              className="mb-5 input1"
+              className="mb-4 input1"
               placeholder="enter type"
               onChange={(e) => setVal8(e.target.value)}
             />
-            <br />
             <label>ClassName </label>
             <input
               type="text"
-              className="mb-5 input1"
+              className="mb-4 input1"
               onChange={(e) => setVal1(e.target.value)}
               placeholder="enter class"
             />
             <label>Label</label>
             <input
               type="text"
-              className="mb-5 input1"
+              className="mb-4 input1"
               name="firstname"
               onChange={(e) => setVal3(e.target.value)}
               placeholder="enter label"
@@ -255,21 +249,21 @@ function DragDrop() {
             <label>Name</label>
             <input
               type="text"
-              className="mb-5  input1"
+              className="mb-4 input1"
               onChange={(e) => setVal5(e.target.value)}
               placeholder="enter name"
             />
             <label>Maxlength</label>
             <input
               type="text"
-              className="mb-5  input1"
+              className="mb-4  input1"
               onChange={(e) => setVal6(e.target.value)}
               placeholder="enter name"
             />
             <label>size 1 to 50</label>
             <input
               type="text"
-              className="mb-5 input1"
+              className="mb-4 input1"
               onChange={(e) => setVal7(e.target.value)}
               placeholder="enter name"
             />
@@ -287,33 +281,6 @@ function DragDrop() {
           </div>
         ) : null}
         <div className="col-2 mt-5">
-          {/* <div className="d-flex ">
-            <div className="mx-3"></div>
-            <div className="mx-3">
-              {idData.map((items, index) => {
-                return (
-                  <div key={index}>
-                    <h5>id- {items}</h5>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="mx-3">
-              {classNames.map((items, index) => {
-                return (
-                  <div key={index}>
-                    <h5 className="">className- {items}</h5>
-                  </div>
-                );
-              })}
-            </div>              
-            {  
-              showdata.slice(2).map((item)=>{
-                return(<>
-                   <p>{(item)}</p>
-                </>)
-              })}
-          </div> */}
         </div>
       </div>
     </>
