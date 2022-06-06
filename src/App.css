@@ -52,11 +52,18 @@ img {
   margin-left: 50px;
   margin-top: 40px; 
   background-image: url("./images/graph.jpg");
-  
-  
- 
-
 }
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .Board {
+    width: 310px;
+    height: 600px;
+    border: 2px solid black;
+    background-image: url("./images/graph.jpg");
+    margin-left:14px;
+  
+  }
+  }
 .box {
   position: absolute;
   cursor: move;
@@ -72,11 +79,29 @@ img {
   margin-top: 100px;
 }
 
-
  .input1{
   width: 170px;
   height: 30px;
+}
 
+
+@media only screen and (max-width: 600px) {
+  .Board {
+    width: 310px;
+    height: 600px;
+    border: 2px solid black;
+    background-image: url("./images/graph.jpg");
+    margin-left:10px;
+  
+  }
+  }
+
+@media only screen and (max-width: 600px) {
+  .input1 {
+    width: 50px;
+    height: 20px;
+
+  }
 }
 .dropBoard-input{
   margin-top: 100px;
@@ -86,8 +111,8 @@ img {
 
 @media only screen and (max-width: 600px) {
   .Board {
- min-width: 600px;
- min-height: 600px;
+ min-width: 10px;
+ min-height: 50px;
   }
 }
 

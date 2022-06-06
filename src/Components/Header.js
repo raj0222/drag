@@ -6,40 +6,29 @@ const Header = (props) => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-info pt-5 pb-5 ">
-        <div className="container-fluid">
-          <h3 className="text-center">drag drop</h3>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item"></li>
+      <nav className="navbar bg-info pt-5 pb-5 ">
+        <div className="container-fluid d-flex justify-content-start">
+          <h3 className="">drag drop</h3>
+          <div >
+            <ul className="">
+              <p1 className="nav-item"></p1>
               <button
                 type="button"
-                className="btn btn-warning mx-2"
+                className="btn btn-warning mx-4"
                 onClick={handleRefresh}
               >
                 New
               </button>
               <button
                 type="button"
-                className="btn btn-warning mx-2"
+                className="btn btn-warning mx-4"
                 onClick={props.onClick}
               >
                 Save
               </button>
               <button
                 type="button"
-                className="btn btn-warning mx-2"
+                className="btn btn-warning mx-4"
                 onClick={props.getcode}
               >
                 Save form data
